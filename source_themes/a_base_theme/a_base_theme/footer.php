@@ -4,7 +4,7 @@
  *
  * Contains the closing of the #content div and all content after
  *
- * @package Black Omen
+ * @package a_base_theme
  */
 ?>
 
@@ -12,9 +12,9 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'blackomen' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'blackomen' ), 'WordPress' ); ?></a>
+			<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'a_base_theme' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'a_base_theme' ), 'WordPress' ); ?></a>
 			<span class="sep"> | </span>
-			<?php printf( __( 'Theme: %1$s by %2$s.', 'blackomen' ), 'Black Omen', '<a href="http://blackomen.org" rel="designer">Kevin Mahoney</a>' ); ?>
+			<?php printf( __( 'Theme: %1$s by %2$s.', 'a_base_theme' ), 'a_base_theme', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

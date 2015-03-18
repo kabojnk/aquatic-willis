@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package Black Omen
+ * @package a_base_theme
  */
 
 if ( ! function_exists( 'the_posts_navigation' ) ) :
@@ -20,15 +20,15 @@ function the_posts_navigation() {
 	}
 	?>
 	<nav class="navigation posts-navigation" role="navigation">
-		<h2 class="screen-reader-text"><?php _e( 'Posts navigation', 'blackomen' ); ?></h2>
+		<h2 class="screen-reader-text"><?php _e( 'Posts navigation', 'a_base_theme' ); ?></h2>
 		<div class="nav-links">
 
 			<?php if ( get_next_posts_link() ) : ?>
-			<div class="nav-previous"><?php next_posts_link( __( 'Older posts', 'blackomen' ) ); ?></div>
+			<div class="nav-previous"><?php next_posts_link( __( 'Older posts', 'a_base_theme' ) ); ?></div>
 			<?php endif; ?>
 
 			<?php if ( get_previous_posts_link() ) : ?>
-			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts', 'blackomen' ) ); ?></div>
+			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts', 'a_base_theme' ) ); ?></div>
 			<?php endif; ?>
 
 		</div><!-- .nav-links -->
@@ -53,7 +53,7 @@ function the_post_navigation() {
 	}
 	?>
 	<nav class="navigation post-navigation" role="navigation">
-		<h2 class="screen-reader-text"><?php _e( 'Post navigation', 'blackomen' ); ?></h2>
+		<h2 class="screen-reader-text"><?php _e( 'Post navigation', 'a_base_theme' ); ?></h2>
 		<div class="nav-links">
 			<?php
 				previous_post_link( '<div class="nav-previous">%link</div>', '%title' );
@@ -65,11 +65,11 @@ function the_post_navigation() {
 }
 endif;
 
-if ( ! function_exists( 'blackomen_posted_on' ) ) :
+if ( ! function_exists( 'a_base_theme_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function blackomen_posted_on() {
+function a_base_theme_posted_on() {
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
@@ -83,12 +83,12 @@ function blackomen_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		_x( 'Posted on %s', 'post date', 'blackomen' ),
+		_x( 'Posted on %s', 'post date', 'a_base_theme' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(
-		_x( 'by %s', 'post author', 'blackomen' ),
+		_x( 'by %s', 'post author', 'a_base_theme' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
@@ -97,33 +97,33 @@ function blackomen_posted_on() {
 }
 endif;
 
-if ( ! function_exists( 'blackomen_entry_footer' ) ) :
+if ( ! function_exists( 'a_base_theme_entry_footer' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  */
-function blackomen_entry_footer() {
+function a_base_theme_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' == get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( __( ', ', 'blackomen' ) );
-		if ( $categories_list && blackomen_categorized_blog() ) {
-			printf( '<span class="cat-links">' . __( 'Posted in %1$s', 'blackomen' ) . '</span>', $categories_list );
+		$categories_list = get_the_category_list( __( ', ', 'a_base_theme' ) );
+		if ( $categories_list && a_base_theme_categorized_blog() ) {
+			printf( '<span class="cat-links">' . __( 'Posted in %1$s', 'a_base_theme' ) . '</span>', $categories_list );
 		}
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', __( ', ', 'blackomen' ) );
+		$tags_list = get_the_tag_list( '', __( ', ', 'a_base_theme' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . __( 'Tagged %1$s', 'blackomen' ) . '</span>', $tags_list );
+			printf( '<span class="tags-links">' . __( 'Tagged %1$s', 'a_base_theme' ) . '</span>', $tags_list );
 		}
 	}
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link">';
-		comments_popup_link( __( 'Leave a comment', 'blackomen' ), __( '1 Comment', 'blackomen' ), __( '% Comments', 'blackomen' ) );
+		comments_popup_link( __( 'Leave a comment', 'a_base_theme' ), __( '1 Comment', 'a_base_theme' ), __( '% Comments', 'a_base_theme' ) );
 		echo '</span>';
 	}
 
-	edit_post_link( __( 'Edit', 'blackomen' ), '<span class="edit-link">', '</span>' );
+	edit_post_link( __( 'Edit', 'a_base_theme' ), '<span class="edit-link">', '</span>' );
 }
 endif;
 
@@ -140,45 +140,45 @@ if ( ! function_exists( 'the_archive_title' ) ) :
  */
 function the_archive_title( $before = '', $after = '' ) {
 	if ( is_category() ) {
-		$title = sprintf( __( 'Category: %s', 'blackomen' ), single_cat_title( '', false ) );
+		$title = sprintf( __( 'Category: %s', 'a_base_theme' ), single_cat_title( '', false ) );
 	} elseif ( is_tag() ) {
-		$title = sprintf( __( 'Tag: %s', 'blackomen' ), single_tag_title( '', false ) );
+		$title = sprintf( __( 'Tag: %s', 'a_base_theme' ), single_tag_title( '', false ) );
 	} elseif ( is_author() ) {
-		$title = sprintf( __( 'Author: %s', 'blackomen' ), '<span class="vcard">' . get_the_author() . '</span>' );
+		$title = sprintf( __( 'Author: %s', 'a_base_theme' ), '<span class="vcard">' . get_the_author() . '</span>' );
 	} elseif ( is_year() ) {
-		$title = sprintf( __( 'Year: %s', 'blackomen' ), get_the_date( _x( 'Y', 'yearly archives date format', 'blackomen' ) ) );
+		$title = sprintf( __( 'Year: %s', 'a_base_theme' ), get_the_date( _x( 'Y', 'yearly archives date format', 'a_base_theme' ) ) );
 	} elseif ( is_month() ) {
-		$title = sprintf( __( 'Month: %s', 'blackomen' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'blackomen' ) ) );
+		$title = sprintf( __( 'Month: %s', 'a_base_theme' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'a_base_theme' ) ) );
 	} elseif ( is_day() ) {
-		$title = sprintf( __( 'Day: %s', 'blackomen' ), get_the_date( _x( 'F j, Y', 'daily archives date format', 'blackomen' ) ) );
+		$title = sprintf( __( 'Day: %s', 'a_base_theme' ), get_the_date( _x( 'F j, Y', 'daily archives date format', 'a_base_theme' ) ) );
 	} elseif ( is_tax( 'post_format' ) ) {
 		if ( is_tax( 'post_format', 'post-format-aside' ) ) {
-			$title = _x( 'Asides', 'post format archive title', 'blackomen' );
+			$title = _x( 'Asides', 'post format archive title', 'a_base_theme' );
 		} elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) {
-			$title = _x( 'Galleries', 'post format archive title', 'blackomen' );
+			$title = _x( 'Galleries', 'post format archive title', 'a_base_theme' );
 		} elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
-			$title = _x( 'Images', 'post format archive title', 'blackomen' );
+			$title = _x( 'Images', 'post format archive title', 'a_base_theme' );
 		} elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
-			$title = _x( 'Videos', 'post format archive title', 'blackomen' );
+			$title = _x( 'Videos', 'post format archive title', 'a_base_theme' );
 		} elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
-			$title = _x( 'Quotes', 'post format archive title', 'blackomen' );
+			$title = _x( 'Quotes', 'post format archive title', 'a_base_theme' );
 		} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
-			$title = _x( 'Links', 'post format archive title', 'blackomen' );
+			$title = _x( 'Links', 'post format archive title', 'a_base_theme' );
 		} elseif ( is_tax( 'post_format', 'post-format-status' ) ) {
-			$title = _x( 'Statuses', 'post format archive title', 'blackomen' );
+			$title = _x( 'Statuses', 'post format archive title', 'a_base_theme' );
 		} elseif ( is_tax( 'post_format', 'post-format-audio' ) ) {
-			$title = _x( 'Audio', 'post format archive title', 'blackomen' );
+			$title = _x( 'Audio', 'post format archive title', 'a_base_theme' );
 		} elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
-			$title = _x( 'Chats', 'post format archive title', 'blackomen' );
+			$title = _x( 'Chats', 'post format archive title', 'a_base_theme' );
 		}
 	} elseif ( is_post_type_archive() ) {
-		$title = sprintf( __( 'Archives: %s', 'blackomen' ), post_type_archive_title( '', false ) );
+		$title = sprintf( __( 'Archives: %s', 'a_base_theme' ), post_type_archive_title( '', false ) );
 	} elseif ( is_tax() ) {
 		$tax = get_taxonomy( get_queried_object()->taxonomy );
 		/* translators: 1: Taxonomy singular name, 2: Current taxonomy term */
-		$title = sprintf( __( '%1$s: %2$s', 'blackomen' ), $tax->labels->singular_name, single_term_title( '', false ) );
+		$title = sprintf( __( '%1$s: %2$s', 'a_base_theme' ), $tax->labels->singular_name, single_term_title( '', false ) );
 	} else {
-		$title = __( 'Archives', 'blackomen' );
+		$title = __( 'Archives', 'a_base_theme' );
 	}
 
 	/**
@@ -226,8 +226,8 @@ endif;
  *
  * @return bool
  */
-function blackomen_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'blackomen_categories' ) ) ) {
+function a_base_theme_categorized_blog() {
+	if ( false === ( $all_the_cool_cats = get_transient( 'a_base_theme_categories' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
 		$all_the_cool_cats = get_categories( array(
 			'fields'     => 'ids',
@@ -240,27 +240,27 @@ function blackomen_categorized_blog() {
 		// Count the number of categories that are attached to the posts.
 		$all_the_cool_cats = count( $all_the_cool_cats );
 
-		set_transient( 'blackomen_categories', $all_the_cool_cats );
+		set_transient( 'a_base_theme_categories', $all_the_cool_cats );
 	}
 
 	if ( $all_the_cool_cats > 1 ) {
-		// This blog has more than 1 category so blackomen_categorized_blog should return true.
+		// This blog has more than 1 category so a_base_theme_categorized_blog should return true.
 		return true;
 	} else {
-		// This blog has only 1 category so blackomen_categorized_blog should return false.
+		// This blog has only 1 category so a_base_theme_categorized_blog should return false.
 		return false;
 	}
 }
 
 /**
- * Flush out the transients used in blackomen_categorized_blog.
+ * Flush out the transients used in a_base_theme_categorized_blog.
  */
-function blackomen_category_transient_flusher() {
+function a_base_theme_category_transient_flusher() {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
 	// Like, beat it. Dig?
-	delete_transient( 'blackomen_categories' );
+	delete_transient( 'a_base_theme_categories' );
 }
-add_action( 'edit_category', 'blackomen_category_transient_flusher' );
-add_action( 'save_post',     'blackomen_category_transient_flusher' );
+add_action( 'edit_category', 'a_base_theme_category_transient_flusher' );
+add_action( 'save_post',     'a_base_theme_category_transient_flusher' );

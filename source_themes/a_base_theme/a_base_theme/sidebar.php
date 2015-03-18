@@ -2,7 +2,7 @@
 /**
  * The sidebar containing the main widget area.
  *
- * @package Black Omen
+ * @package a_base_theme
  */
 
 if ( ! is_active_sidebar( 'sidebar-1' ) ) {

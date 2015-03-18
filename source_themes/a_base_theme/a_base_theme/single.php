@@ -2,7 +2,7 @@
 /**
  * The template for displaying all single posts.
  *
- * @package Black Omen
+ * @package a_base_theme
  */
 
 get_header(); ?>

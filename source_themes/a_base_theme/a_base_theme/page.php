@@ -7,7 +7,7 @@
  * and that other 'pages' on your WordPress site will use a
  * different template.
  *
- * @package Black Omen
+ * @package a_base_theme
  */
 
 get_header(); ?>

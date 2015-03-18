@@ -1,6 +1,6 @@
 <?php
 /**
- * @package Black Omen
+ * @package a_base_theme
  */
 ?>
 
@@ -10,7 +10,7 @@
 
 		<?php if ( 'post' == get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php blackomen_posted_on(); ?>
+			<?php a_base_theme_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
@@ -19,20 +19,20 @@
 		<?php
 			/* translators: %s: Name of current post */
 			the_content( sprintf(
-				__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'blackomen' ),
+				__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'a_base_theme' ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			) );
 		?>
 
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'blackomen' ),
+				'before' => '<div class="page-links">' . __( 'Pages:', 'a_base_theme' ),
 				'after'  => '</div>',
 			) );
 		?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php blackomen_entry_footer(); ?>
+		<?php a_base_theme_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

@@ -1,8 +1,8 @@
 <?php
 /**
- * Black Omen functions and definitions
+ * a_base_theme functions and definitions
  *
- * @package Black Omen
+ * @package a_base_theme
  */
 
 /**
@@ -12,7 +12,7 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 640; /* pixels */
 }
 
-if ( ! function_exists( 'blackomen_setup' ) ) :
+if ( ! function_exists( 'a_base_theme_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -20,15 +20,15 @@ if ( ! function_exists( 'blackomen_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function blackomen_setup() {
+function a_base_theme_setup() {
 
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on Black Omen, use a find and replace
-	 * to change 'blackomen' to the name of your theme in all the template files
+	 * If you're building a theme based on a_base_theme, use a find and replace
+	 * to change 'a_base_theme' to the name of your theme in all the template files
 	 */
-	load_theme_textdomain( 'blackomen', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'a_base_theme', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -50,7 +50,7 @@ function blackomen_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'blackomen' ),
+		'primary' => __( 'Primary Menu', 'a_base_theme' ),
 	) );
 
 	/*
@@ -70,22 +70,22 @@ function blackomen_setup() {
 	) );
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'blackomen_custom_background_args', array(
+	add_theme_support( 'custom-background', apply_filters( 'a_base_theme_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
 }
-endif; // blackomen_setup
-add_action( 'after_setup_theme', 'blackomen_setup' );
+endif; // a_base_theme_setup
+add_action( 'after_setup_theme', 'a_base_theme_setup' );
 
 /**
  * Register widget area.
  *
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  */
-function blackomen_widgets_init() {
+function a_base_theme_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'blackomen' ),
+		'name'          => __( 'Sidebar', 'a_base_theme' ),
 		'id'            => 'sidebar-1',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -94,23 +94,23 @@ function blackomen_widgets_init() {
 		'after_title'   => '</h1>',
 	) );
 }
-add_action( 'widgets_init', 'blackomen_widgets_init' );
+add_action( 'widgets_init', 'a_base_theme_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function blackomen_scripts() {
-	wp_enqueue_style( 'blackomen-style', get_stylesheet_uri() );
+function a_base_theme_scripts() {
+	wp_enqueue_style( 'a_base_theme-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'blackomen-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+	wp_enqueue_script( 'a_base_theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
-	wp_enqueue_script( 'blackomen-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'a_base_theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'blackomen_scripts' );
+add_action( 'wp_enqueue_scripts', 'a_base_theme_scripts' );
 
 /**
  * Implement the Custom Header feature.

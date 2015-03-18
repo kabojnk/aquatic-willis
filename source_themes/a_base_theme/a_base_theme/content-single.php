@@ -1,6 +1,6 @@
 <?php
 /**
- * @package Black Omen
+ * @package a_base_theme
  */
 ?>
 
@@ -9,7 +9,7 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 		<div class="entry-meta">
-			<?php blackomen_posted_on(); ?>
+			<?php a_base_theme_posted_on(); ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
@@ -17,13 +17,13 @@
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'blackomen' ),
+				'before' => '<div class="page-links">' . __( 'Pages:', 'a_base_theme' ),
 				'after'  => '</div>',
 			) );
 		?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php blackomen_entry_footer(); ?>
+		<?php a_base_theme_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

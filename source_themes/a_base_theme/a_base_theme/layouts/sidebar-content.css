@@ -1,18 +1,18 @@
 /*
-Theme Name: Black Omen
-Layout: Content-Sidebar
+Theme Name: a_base_theme
+Layout: Sidebar-Content
 */
 
 .content-area {
-	float: left;
-	margin: 0 -25% 0 0;
+	float: right;
+	margin: 0 0 0 -25%;
 	width: 100%;
 }
 .site-main {
-	margin: 0 25% 0 0;
+	margin: 0 0 0 25%;
 }
 .site-content .widget-area {
-	float: right;
+	float: left;
 	overflow: hidden;
 	width: 25%;
 }
