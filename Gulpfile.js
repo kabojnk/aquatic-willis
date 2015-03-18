@@ -10,11 +10,11 @@ var      gulp = require('gulp'),
 /*_---_-_-__---__----____------------------.
 //------------------------------------------------------------------------------
 //
-//  THE BLACK OMEN
+//  AQUATIC WILLIS
 //  by Kevin Mahoney <kevin@blackomen.org>
 //
 //
-//  This is the Black Omen Gulp file. Here is how it works:
+//  This is the Aquatic Willis Gulp file. Here is how it works:
 //
 //  Three tasks are run on each theme: 1) CSS, 2) Javascripts, and 3) Move
 //  theme files.
@@ -35,8 +35,8 @@ var      gulp = require('gulp'),
 //     whatever else.
 //
 //  Really, this structure can work any way as long as you modify the variables
-//  below.  For the Black Omen site (and any other themes), I've decided to
-//  structure my source folders in the following way:
+//  below.  For the Black Omen site I'm building, I've decided to structure my
+//  source folders in the following way:
 //
 //  - [theme_name]/
 //    - sass/         <-- all Sass files
@@ -105,7 +105,7 @@ gulp.task('styles', function(){
             includePaths: ['styles'].concat(neat)
         }))
         .pipe(concat('style.css'))
-        //.pipe(minifyCSS())
+        .pipe(minifyCSS())
         .pipe(gulp.dest(path.join(destination, theme_key)));
   });
 });
