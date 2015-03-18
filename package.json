@@ -1,13 +1,13 @@
 {
-  "name": "blackomen-themes",
+  "name": "aquatic-willis",
   "version": "1.0.0",
-  "description": "Theme building for Black Omen website",
+  "description": "Theme Development Pipeline for Wordpress",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Kevin Mahoney",
-  "license": "ISC",
+  "author": "Kevin Mahoney <kevin@blackomen.org>",
+  "license": "MIT",
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-concat": "^2.5.2",

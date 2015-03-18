@@ -1,32 +1,36 @@
-# Aquatic Willis
+# Introduction
+
+Aquatic Willis is a **workflow** for WordPress theme development and deployment.
+It is not a node module, it is not a framework, it is merely a glorified
+Gulpfile with some utility functionality added in.
 
 I named this project *Aquatic Willis* because this is a tiny project that nobody
 will probably end up using, and thus it doesn't deserve an edgy or pithy name. I
 took the names of two people on my friends list in a video game and smashed them
 together.
 
-Don't use Aquatic Willis if you're not afraid to get your hands dirty. This
-isn't a silver bullet, it's just merely the silver you smelt to manufacture your
-own personal silver bullets.
+# TL;DR: How do I use Aquatic Willis?
 
-# tl;dr How do I use it?
+I've only run/tested this on OSX. Good luck, soldier.
 
-## If you don't have nodejs and gulp installed
-
-If you don't even know what node or gulp is, you probably shouldn't even be
-using this project until you read up on both (links below).
+## Prerequisites:
 
 1. Install [nodeJS](https://nodejs.org/), if you don't already have it.
-2. Open up a terminal, and `cd <wherever AW is installed>`
-3. Type `npm install --global gulp` to install [Gulp](http://gulpjs.com/).
+2. Install [Gulp](http://gulpjs.com/). Most easily done via this command:
+`npm install --global gulp`.
 
-### When you have nodejs and gulp
+## Installation
 
-1. In the same terminal, and directory, type `npm install`
-2. Type `gulp` to run your Gulpfile if you don't care about setting anything up.
-3. Or type `gulp --sandbox` for sandbox testing on a [local webserver sandbox](#sandbox).
+1. `npm install`
+2. Edit `Gulpfile.js` and change anything you want to change in the Configuration section.
+3. Type `gulp` to compile everything and deploy your themes to their destination
+4. Or type `gulp --sandbox` for quick testing on a [local webserver sandbox](#sandbox).
 
 # What does Aquatic Willis do?
+
+*Don't use Aquatic Willis if you're not afraid to get your hands dirty. This
+isn't a silver bullet, it's just merely the silver you smelt to manufacture your
+own personal silver bullets.*
 
 I made this package as a development pipeline for WordPress themes, keeping my
 *source* files (e.g. .scss files and non-uglified Javascripts) **isolated** from
@@ -50,7 +54,7 @@ you can quickly test layouts and style tiles using static HTML templates (rather
 
  (and NOT `gulp sandbox`).
 
-# This is a conventional project (caveat emptor)
+## Aquatic Willis is a conventional workflow
 
 I'm generally not a fan of added fragmentation of a development pipeline. You
 shouldn't be, either. But if you're like me and just wanted a quick way to go
@@ -76,7 +80,7 @@ variables correctly. The default way this is setup is to have this structure in
 the root directory where this readme file is:
 
 ```
-- themes/           <-- folder where all source themes are kept
+- source_themes/    <-- folder where all source themes are kept
   - [theme_name]/   <-- the theme folder
     - sass/         <-- all Sass files
     - js/           <-- all javascript files
@@ -110,4 +114,4 @@ eventually change this to where your VVV install has its themes directory.**
 1. The CSS task will compile all Sass files found. It will then minify and spit out a single .css file for use.
 2. The Javascripts task will uglify and concat all of the javascript files found in the js source files directory.
 3. The "theme_files" are the rest of the other files. PHP files, text files, etc.
-4. A bonus task called "webserver" for when you're running the file in [sandbox](#sandbox) mode.
+4. The "webserver" task, only executed when you're running the file in [sandbox](#sandbox) mode.
