@@ -77,7 +77,7 @@ var destination = './derp/';
 var source_files = {
   scss: 'sass/**/*.scss',
   javascripts: 'js/**/*.js',
-  theme_files: '**'
+  theme_files: '**(!style.css)'
 };
 
 // This is when you want to pipe your CSS/JS files to a sandbox directory
