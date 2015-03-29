@@ -77,7 +77,7 @@ var destination = './derp/';
 var source_files = {
   scss: 'sass/**/*.scss',
   javascripts: 'js/**/*.js',
-  theme_files: '**(!style.css)/**'
+  theme_files: '**'
 };
 
 // This is when you want to pipe your CSS/JS files to a sandbox directory
@@ -148,7 +148,7 @@ gulp.task('webserver', function() {
 });
 
 // Default task ("RUN ALL THE TASKS!")
-var allTasks = ['styles', 'javascripts', 'theme_files', 'webserver'];
+var allTasks = ['theme_files', 'styles', 'javascripts', 'webserver'];
 if (!argv.sandbox) {
   allTasks.pop();
 }
