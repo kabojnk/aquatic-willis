@@ -4,8 +4,11 @@ var      gulp = require('gulp'),
        uglify = require('gulp-uglify'),
        concat = require('gulp-concat'),
     minifyCSS = require('gulp-minify-css'),
-         neat = require('node-neat').includePaths;
-         argv = require('yargs').argv;
+         neat = require('node-neat').includePaths,
+         argv = require('yargs').argv,
+     imagemin = require('gulp-imagemin'),
+     pngquant = require('imagemin-pngquant');
+
 
 /*_---_-_-__---__----____------------------.
 //------------------------------------------------------------------------------
@@ -16,8 +19,8 @@ var      gulp = require('gulp'),
 //
 //  This is the Aquatic Willis Gulp file. Here is how it works:
 //
-//  Three tasks are run on each theme: 1) CSS, 2) Javascripts, and 3) Move
-//  theme files.
+//  Three tasks are run on each theme: 1) CSS, 2) Javascripts, 3) images, and
+//  4) Move the rest of the theme files.
 //
 //  The major idea here is to run tasks on "source directories", which are
 //  themes that contain the raw files before we do any Sass compiling, JS
@@ -25,14 +28,19 @@ var      gulp = require('gulp'),
 //  a destination theme directory. This way we don't have Sass files and
 //  stray javascript files lying around in our finished product.
 //
-//  1) The CSS task will compile all Sass files found. It will then minify
+//  1) The "theme_files" are all of the theme-related files. PHP files, text
+//     files. This is the first batch of files to be copied over. Some of these
+//     files might run the risk of being overwritten by the CSS, Javascripts, or
+//     Images tasks.
+//
+//  2) The CSS task will compile all Sass files found. It will then minify
 //     and spit out a single .css file for use.
 //
-//  2) The Javascripts task will uglify and concat all of the javascript
+//  3) The Javascripts task will uglify and concat all of the javascript
 //     files found in the js source files directory.
 //
-//  3) The "theme_files" are the rest of the other files. PHP files, text files,
-//     whatever else.
+//  4) The Images task will minify all images and copy them over to an "images/"
+//     folder inside a theme.
 //
 //  Really, this structure can work any way as long as you modify the variables
 //  below.  For the Black Omen site I'm building, I've decided to structure my
@@ -41,6 +49,7 @@ var      gulp = require('gulp'),
 //  - [theme_name]/
 //    - sass/         <-- all Sass files
 //    - js/           <-- all javascript files
+//    - images/       <-- all images
 //    - [theme_name]  <-- all WP-related theme files
 //
 //
@@ -75,9 +84,10 @@ var destination = './derp/';
 
 // Paths/files within each theme that we want to use for the various gulp tasks.
 var source_files = {
+  theme_files: '**',
   scss: 'sass/**/*.scss',
   javascripts: 'js/**/*.js',
-  theme_files: '**'
+  images: 'images/**'
 };
 
 // This is when you want to pipe your CSS/JS files to a sandbox directory
@@ -117,6 +127,19 @@ gulp.task('javascripts', function(){
         .pipe(uglify())
         .pipe(concat('blackomen.js'))
         .pipe(gulp.dest(path.join(destination, theme_key, 'js')));
+  });
+});
+
+// Images
+gulp.task('images', function () {
+  themes.forEach(function(theme_key){
+    return gulp.src(path.join(source_themes_dir, theme_key, source_files.images))
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+            use: [pngquant()]
+        }))
+        .pipe(gulp.dest(path.join(destination, theme_key, 'images')));
   });
 });
 

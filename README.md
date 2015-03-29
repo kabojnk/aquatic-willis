@@ -84,6 +84,7 @@ the root directory where this readme file is:
   - [theme_name]/   <-- the theme folder
     - sass/         <-- all Sass files
     - js/           <-- all javascript files
+    - images/       <-- all image files
     - [theme_name]  <-- all WP-related theme files (yes, the theme name is redundant)
 ```
 
@@ -111,7 +112,8 @@ eventually change this to where your VVV install has its themes directory.**
 
 ## The Predefined Gulp Tasks
 
-1. The CSS task will compile all Sass files found. It will then minify and spit out a single .css file for use.
-2. The Javascripts task will uglify and concat all of the javascript files found in the js source files directory.
-3. The "theme_files" are the rest of the other files. PHP files, text files, etc.
+1. The "theme_files" are the all of your theme files (PHP files, etc). Keep in mind that this operation happens first, meaning that the following CSS, Javascripts or Images tasks could potentially overwrite any other files inside your "theme_files" directory. This is generally desired behavior, because odds are you'd want the processed CSS/JS/Image file over whatever was lurking inside that directory in the first place.
+2. The CSS task will compile all Sass files found. It will then minify and spit out a single .css file for use.
+3. The Javascripts task will uglify and concat all of the javascript files found in the js source files directory.
+4. The Images task will minify and copy over all image files in the predefined location and copy them over into an images/ subdirectory inside your output theme.
 4. The "webserver" task, only executed when you're running the file in [sandbox](#sandbox) mode.
