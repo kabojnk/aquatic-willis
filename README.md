@@ -1,5 +1,7 @@
 # Introduction
 
+**Disclaimer: If you're serious about doing something beyond a personal blog, please for the love of all that is holy don't ever, ever, EVER use WordPress. In fact, even if you're doing a personal blog don't use WordPress. You're polluting the web.**
+
 Aquatic Willis is a **workflow** for WordPress theme development and deployment.
 It is not a node module, it is not a framework, it is merely a glorified
 Gulpfile with some utility functionality added in.
